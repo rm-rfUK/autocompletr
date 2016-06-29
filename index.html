@@ -5,6 +5,13 @@
     <title>Autocompletr</title>
   </head>
   <body>
+    <h3>Type here:</h3>
+    <form action="/create-post" method="POST">
+      <textarea name="autocomp" rows="1" cols="14">
+      </textarea>
+      <button type="submit">Submit</button>
+    </form>
+
     <form action='server.js'>
       Type here:<br>
       <input type='text' name='typeHere' id='typed-letters' autocomplete="off"><br>

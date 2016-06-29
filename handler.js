@@ -19,5 +19,4 @@ function handler (request, response) {
  }
 }
 
-
 module.exports = handler;
