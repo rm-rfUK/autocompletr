@@ -1,16 +1,10 @@
-var http = require('http');
-var server = http.createServer(handler);
+const http = require('http');
+const handler = require('./handler.js');
+const server = http.createServer(handler);
+const fs = require('fs');
+// const handler = require('./handler.js');
 
-var message = "Hi!!!"
+const port = 3000;
+server.listen(port);
 
-function handler (request, response) {
-
-  response.writeHead(200, {"Content-Type": "text/html"});
-  response.write(message);
-  response.end();
-}
-
-
-server.listen(3000, function() {
-    console.log("Server is listening on port 3000.  Ready to accept requests!")
-});
+console.log(`Server running on http://localhost:${port}`);
