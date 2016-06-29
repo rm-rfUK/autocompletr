@@ -7,19 +7,17 @@
   </head>
   <body>
 
-    <div id='button'>click</div>
+<div id='button'>click</div>
+
     <form action="/create-response" method="POST">
-
-    <input type='text' id='field' name='inputString' autocomplete="off">
-
+      <input type='text' name='inputString' id='typed-letters' autocomplete="off"><br>
+      <!-- <input type='submit' id='submit-button'> -->
     </form>
 
-<table id='suggestions'>
+    <table id='suggestions'></table>
 
-</table>
+    <div id='display-content'></div>
 
-<div id='display-content'></div>
-
-      <script src="request.js" charset="utf-8"></script>
+  <script src="request.js" charset="utf-8"></script>
   </body>
 </html>
