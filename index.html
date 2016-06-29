@@ -3,13 +3,19 @@
   <head>
     <meta charset="utf-8">
     <title>Autocompletr</title>
+    <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <h3>Type here:</h3>
-    <form action="/create-response" method="POST">
-      <input type='text' name='inputString' id='typed-letters' autocomplete="off"><br>
-      <input type='submit' id='submit-button'>
-    </form>
-    <p id='demo'></p>
+
+    <div id='button'>click</div>
+    <input type='text' id='field'>
+
+<table id='suggestions'>
+
+</table>
+
+<div id='display-content'></div>
+
+      <script src="request.js" charset="utf-8"></script>
   </body>
 </html>
