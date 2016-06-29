@@ -18,4 +18,11 @@ function getWords(letters){
   });
 }
 
-getWords("");
+// getWords("a");
+// getWords("ab");
+// getWords("abc");
+// getWords("abcd");
+// getWords("abcde");
+// getWords("abcdef");
+// getWords("abcdefg");
+// getWords("abcdefgh");
