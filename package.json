@@ -2,10 +2,11 @@
   "name": "autocompletr",
   "version": "1.0.0",
   "description": "Everyone's favourite team, \"rm -rf uk\", is ready to get cracking on their new project, autocompletr.",
-  "main": "server.js",
+  "main": "src/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
+    "start": "node src/server.js",
+    "nodemon": "nodemon src/server.js"
   },
   "repository": {
     "type": "git",
