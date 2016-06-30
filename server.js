@@ -10,7 +10,8 @@ const port = 3000;
 server.listen(port);
 console.log(`Server running on http://localhost:${port}`);
 
-// loadfile.readFile('dictionary/words.txt', function() {
+//read file as string and put in memory
+// loadfile.loadFileAsString('dictionary/words.txt', function() {
 //   server.listen(port);
 //   console.log(`Server running on http://localhost:${port}`);
 // })

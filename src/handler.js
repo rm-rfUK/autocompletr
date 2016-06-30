@@ -1,5 +1,7 @@
 const fs = require('fs');
 const querystring = require('querystring');
+// var AlgorithmTrie = require('AlgorithmTrie');
+// var wordsTrie = new AlgorithmTrie;
 
 function handler(request, response) {
   const endpoint = request.url;
