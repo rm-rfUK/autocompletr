@@ -6,9 +6,9 @@ function handler (request, response) {
   if (endpoint === '/') {
     response.writeHead(200, {'Content-Type': 'text/html'});
 
-    fs.readFile(__dirname + '/public/index.html', function(error, file) {
-      if (error) { throw error; }
-        response.end(file);
+    fs.readFile(__dirname + '/../public/index.html', function(error, file) {
+      if (error) console.log(error);
+      response.end(file);
       });
     // } else if (endpoint === ".css") {
         // response.writeHead(200, {"Content-Type": appropriate type });
@@ -24,7 +24,7 @@ function handler (request, response) {
         console.log(allTheData);
         const convertedData = querystring.parse(allTheData);
         console.log(convertedData);
-        response.writeHead(205, {'Location': '__dirname + "/public/index.html"'});
+        response.writeHead(205, {'Location': '__dirname + "/../public/index.html"'});
         response.end();
       });
     }
