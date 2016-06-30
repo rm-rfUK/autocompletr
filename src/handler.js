@@ -6,31 +6,28 @@ function handler (request, response) {
   if (endpoint === '/') {
     response.writeHead(200, {'Content-Type': 'text/html'});
 
-    fs.readFile(__dirname + '/index.html', function(error, file) {
-      if (error) {
-        return console.log(error);
-      }
-      response.end(file);
-    });
-  // } else if (endpoint === ".css") {
-      // response.writeHead(200, {"Content-Type": appropriate type });
-     // do the thing
-  // } else if (endpoint === '/create-response') {
-  } else if (endpoint.includes('/create-response')) {
-   let allTheData = '';
-   request.on('data', function (chunkOfData) {
+    fs.readFile(__dirname + '/public/index.html', function(error, file) {
+      if (error) { throw error; }
+        response.end(file);
+      });
+    // } else if (endpoint === ".css") {
+        // response.writeHead(200, {"Content-Type": appropriate type });
+       // do the thing
+    // } else if (endpoint === '/create-response') {
+      } else if (endpoint.includes('/create-response')) {
+        let allTheData = '';
+        request.on('data', function (chunkOfData) {
+          allTheData += chunkOfData;
+        });
 
-       allTheData += chunkOfData;
-   });
-
-   request.on('end', function () {
-     console.log(allTheData);
-     const convertedData = querystring.parse(allTheData);
-     console.log(convertedData);
-     response.writeHead(205, {'Location': '__dirname + "/index.html"'});
-     response.end();
-   });
-  }
+      request.on('end', function () {
+        console.log(allTheData);
+        const convertedData = querystring.parse(allTheData);
+        console.log(convertedData);
+        response.writeHead(205, {'Location': '__dirname + "/public/index.html"'});
+        response.end();
+      });
+    }
 }
 
 
