@@ -1,5 +1,7 @@
 const fs = require('fs');
 const querystring = require('querystring');
+// var AlgorithmTrie = require('AlgorithmTrie');
+// var wordsTrie = new AlgorithmTrie;
 
 function handler(request, response) {
   const endpoint = request.url;
@@ -10,6 +12,9 @@ function handler(request, response) {
      // do the thing
   } else if (endpoint.includes('/create-response')) {
     createResponse(request, response);
+  } else {
+    response.writeHead(404);
+    response.end('OH NO!');
   }
 }
 
@@ -25,6 +30,7 @@ function renderIndexHtml(request, response) {
 
 function createResponse(request, response) {
   let allTheData = '';
+
   request.on('data', function (chunkOfData) {
       allTheData += chunkOfData;
   });
@@ -35,6 +41,10 @@ function createResponse(request, response) {
     response.writeHead(205, {'Location': '__dirname + "/index.html"'});
     response.end();
   });
+}
+
+function readFile() {
+
 }
 
 module.exports = handler;

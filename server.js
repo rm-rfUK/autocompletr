@@ -1,16 +1,21 @@
 const http = require('http');
-const handler = require('./src/handler.js');
 const fs = require('fs');
-// const loadFile = require('./src/loadFile');
+const handler = require('./src/handler.js');
+const readFileAsString = require('./src/loadFile');
 
 const server = http.createServer(handler);
 
 const port = 3000;
 
 server.listen(port);
-console.log(`Server running on http://localhost:${port}`);
+// console.log(`Server running on http://localhost:${port}`);
 
-// loadfile.readFile('dictionary/words.txt', function() {
-//   server.listen(port);
-//   console.log(`Server running on http://localhost:${port}`);
-// })
+//read .txt file on startup of server and put it in as string in memory
+// the loadFileAsString() is imported from loadfile.js
+// once read the file, loaded it and strigified it, open server to listening.
+// (__dirname + '/../index.html',
+
+readFileAsString(__dirname + '/words.txt', function() {
+  server.listen(port);
+  console.log(`Server running on http://localhost:${port}`);
+})
