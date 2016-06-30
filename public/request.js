@@ -1,5 +1,11 @@
-var letters = document.getElementById('typed-letters');
-letters.addEventListener('keyup', getWords);
+addEventListeners();
+
+function addEventListeners(){
+  var letters = document.getElementById('typed-letters');
+  letters.addEventListener('keyup', getWords);
+  var button = document.getElementById('button');
+  button.addEventListener('click', display);
+}
 
 function getWords(){
 
@@ -23,11 +29,7 @@ function getWords(){
   xhr.send();
 }}
 
-var text = document.getElementById('typed-letters');
-
-var button = document.getElementById('button');
-button.addEventListener('click', display);
-
 function display() {
-document.getElementById('display-content').innerHTML = text.value;
+  var text = document.getElementById('typed-letters');
+  document.getElementById('display-content').innerHTML = text.value;
 }
