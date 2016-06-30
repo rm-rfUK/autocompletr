@@ -4,8 +4,8 @@
   "description": "Everyone's favourite team, \"rm -rf uk\", is ready to get cracking on their new project, autocompletr.",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node src/server.js"
+    "test": "node test/server.test.js",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
