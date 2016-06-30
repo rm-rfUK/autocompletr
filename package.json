@@ -16,5 +16,12 @@
   "bugs": {
     "url": "https://github.com/rm-rfUK/autocompletr/issues"
   },
-  "homepage": "https://github.com/rm-rfUK/autocompletr#readme"
+  "homepage": "https://github.com/rm-rfUK/autocompletr#readme",
+  "devDependencies": {
+    "istanbul": "^0.4.4"
+  },
+  "dependencies": {
+    "shot": "^3.1.0",
+    "tape": "^4.6.0"
+  }
 }
