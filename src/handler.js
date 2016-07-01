@@ -5,13 +5,22 @@ const querystring = require('querystring');
 
 function handler(request, response) {
   const endpoint = request.url;
+  //console.log(endpoint);
   if (endpoint === '/') {
     renderIndexHtml(request, response);
 // } else if (endpoint === ".css") {
       // response.writeHead(200, {"Content-Type": appropriate type });
      // do the thing
-  } else if (endpoint.includes('?')) {
+  } else if (endpoint.includes("/get-content=")) {
     createResponse(request, response);
+  } else if (endpoint.includes('request.js')) {
+    response.writeHead(200, {'Content-Type': 'text/js'});
+    fs.readFile(__dirname + '/../request.js', function(error, file) {
+      if (error) {
+        return console.log(error);
+      }
+        response.end(file);
+    });
   } else {
     response.writeHead(404);
     response.end('OH NO!');
@@ -29,18 +38,11 @@ function renderIndexHtml(request, response) {
 }
 
 function createResponse(request, response) {
-  console.log(request.url);
   let letterString = request.url.split("=")[1];
-  console.log(letterString);
 
-  request.on('end', function () {
-    response.writeHead(205, {'Location': '__dirname + "/index.html"'});
-    response.end("hello");
-  });
-}
-
-function readFile() {
-
+  response.writeHead(200, {"Content-Type":"text/plain"});
+  response.write(letterString);
+  response.end();
 }
 
 module.exports = handler;

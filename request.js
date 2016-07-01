@@ -1,30 +1,26 @@
-setUpEventListeners();
-
-function setUpEventListeners(){
   var letters = document.getElementById('typed-letters');
-  letters.addEventListener('keyup', getWords);
+  // letters.addEventListener('keyup', getWords);
   var button = document.getElementById('submit-button');
   button.addEventListener('click', getWords);
-}
 
-function getWords(){
+function getWords(e){
+  e.preventDefault();
   var xhr = new XMLHttpRequest();
-  // console.log(xhr);
+
   xhr.onreadystatechange = function () {
     if(xhr.readyState === 4 && xhr.status === 200){
-    var result = JSON.parse(xhr.responseText);
-    console.log(result);
+    console.log(xhr.responseText);
     //what it looks like? make/split into an array
-      for(var x = 0; x < result.length; x++){
-        var table = document.getElementById('suggestions');
-        var row = table.insertRow(x + 1);
-        var cell = row.insertCell(0);
-        cell.innerHTML = result[x];
-      }
+      // for(var x = 0; x < result.length; x++){
+      //   var table = document.getElementById('suggestions');
+      //   var row = table.insertRow(x + 1);
+      //   var cell = row.insertCell(0);
+      //   cell.innerHTML = result[x];
+      // }
     }
-  xhr.open("GET", "http://localhost:3000//get-content");
-  xhr.send(data);
   }
+  xhr.open("GET", "/get-content=" + letters.value);
+  xhr.send();
 }
 
 function display() {
