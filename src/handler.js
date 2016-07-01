@@ -10,7 +10,7 @@ function handler(request, response) {
 // } else if (endpoint === ".css") {
       // response.writeHead(200, {"Content-Type": appropriate type });
      // do the thing
-  } else if (endpoint.includes('/create-response')) {
+  } else if (endpoint.includes('?')) {
     createResponse(request, response);
   } else {
     response.writeHead(404);
@@ -29,17 +29,13 @@ function renderIndexHtml(request, response) {
 }
 
 function createResponse(request, response) {
-  let allTheData = '';
+  console.log(request.url);
+  let letterString = request.url.split("=")[1];
+  console.log(letterString);
 
-  request.on('data', function (chunkOfData) {
-      allTheData += chunkOfData;
-  });
   request.on('end', function () {
-    console.log(allTheData);
-    const convertedData = querystring.parse(allTheData);
-    console.log(convertedData);
     response.writeHead(205, {'Location': '__dirname + "/index.html"'});
-    response.end();
+    response.end("hello");
   });
 }
 
