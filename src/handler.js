@@ -1,5 +1,6 @@
 const fs = require('fs');
 const querystring = require('querystring');
+const dummy = require('./dummy');
 // var AlgorithmTrie = require('AlgorithmTrie');
 // var wordsTrie = new AlgorithmTrie;
 
@@ -39,9 +40,11 @@ function renderIndexHtml(request, response) {
 
 function createResponse(request, response) {
   let letterString = request.url.split("=")[1];
-
+  //Kara to put function in here :)
+  let arrayOfWords = dummy(letterString);
+  let stringOfWords = JSON.stringify(arrayOfWords);
   response.writeHead(200, {"Content-Type":"text/plain"});
-  response.write(letterString);
+  response.write(stringOfWords);
   response.end();
 }
 

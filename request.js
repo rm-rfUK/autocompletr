@@ -10,7 +10,8 @@ function getWords(e){
   xhr.onreadystatechange = function () {
     if(xhr.readyState === 4 && xhr.status === 200){
     console.log(xhr.responseText);
-    //what it looks like? make/split into an array
+    var result = JSON.parse(xhr.responseText);
+    console.log(result);
       // for(var x = 0; x < result.length; x++){
       //   var table = document.getElementById('suggestions');
       //   var row = table.insertRow(x + 1);
