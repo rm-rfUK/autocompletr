@@ -12,8 +12,8 @@ function getWords(){
   // console.log(xhr);
   xhr.onreadystatechange = function () {
     if(xhr.readyState === 4 && xhr.status === 200){
-    var result = JSON.parse(xhr.response);
-    // console.log(result);
+    var result = JSON.parse(xhr.responseText);
+    console.log(result);
     //what it looks like? make/split into an array
       for(var x = 0; x < result.length; x++){
         var table = document.getElementById('suggestions');
@@ -23,9 +23,6 @@ function getWords(){
       }
     }
   xhr.open("GET", "http://localhost:3000//get-content");
-  xhr.addEventListener("load", function(){
-  //  console.log("Done:" xhr.status);
-  });
   xhr.send(data);
   }
 }

@@ -29,21 +29,13 @@ function renderIndexHtml(request, response) {
 }
 
 function createResponse(request, response) {
-  const url = request.url;
-  console.log(url);
-  let allTheData = request.url.split("=")[1];
-  console.log(allTheData);
-
-  request.on('data', function (chunkOfData) {
-    allTheData += chunkOfData;
-  });
+  console.log(request.url);
+  let letterString = request.url.split("=")[1];
+  console.log(letterString);
 
   request.on('end', function () {
-    // console.log(allTheData);
-    const convertedData = querystring.parse(allTheData);
-    // console.log(convertedData);
     response.writeHead(205, {'Location': '__dirname + "/index.html"'});
-    response.end();
+    response.end("hello");
   });
 }
 
