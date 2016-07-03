@@ -1,7 +1,7 @@
 const fs = require('fs');
 const querystring = require('querystring');
 
-const renderData = require('./algorithmTrie.js');
+// const renderData = require('./algorithmTrie.js');
 const loadfile = require('./loadfile');
 
 
@@ -40,6 +40,15 @@ function createResponse(request, response) {
     console.log(allTheData);
     const convertedData = querystring.parse(allTheData);
     console.log(convertedData);
+    var searchWord = convertedData['inputString'];
+    console.log(searchWord);
+    loadfile.readFileAsString('../words.txt', function(fileAsString){
+      var output = renderData.renderDataFnc(fileAsString, searchWord); //from render.js  I think maybe the above should read: render.renderDataFunc
+  //   console.log(output, searchWord); //for the sake of testing
+  //   response.writeHead(200, {'Content-Type': 'text/plain'});
+  //   response.end(output); //finish by giving back the result (word) from server
+  // });
+  // This is my previous ending, lets hope it is not needed anymore!
     response.writeHead(205, {'Location': '__dirname + "/index.html"'});
     response.end();
   });

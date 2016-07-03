@@ -1,17 +1,11 @@
-// Create Trie graph using dicionary in server memory, and use it to do autocomplete functionality.  To be used in handler.js
+// Create Trie graph, and use it to do autocomplete functionality.  To be used in render.js (and maybe handler.js?)
 
-
-//take data and split on each new line to make array of words, to be passed into trie
-function makeArray(string){
-  var arrayWords = string.split('\n');
-  return arrayWords;
-};
-
-var T = new Node();
-    for(var i = 0; i < arrayWords.length; i++) {
-        T.insert(arrayWords[i]);
-    }
-
+function createTrie(arrayWords) {
+  var T = new Node();
+  for(var i = 0; i < arrayWords.length; i++) {
+      T.insert(arrayWords[i]);
+  }
+}
 
 var Node = function() {
     this.isWord = false;
@@ -99,9 +93,9 @@ Node.prototype = {
     }
 };
 
+module.exports = createTrie;
 
-
-/*  The work in this file is based on a number of sources, including:
+/*  The trie graph work in this file is based on a number of sources, including:
 http://blog.benoitvallon.com/data-structures-in-javascript/the-trie-data-structure/
 https://www.cs.bu.edu/teaching/c/tree/trie/
 https://www.topcoder.com/community/data-science/data-science-tutorials/using-tries/
