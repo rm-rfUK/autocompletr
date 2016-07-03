@@ -1,18 +1,11 @@
 // Create Trie graph, and use it to do autocomplete functionality.  To be used in render.js (and maybe handler.js?)
 
-function createTrie(arrayWords) {
-  var T = new Node();
-  for(var i = 0; i < arrayWords.length; i++) {
-      T.insert(arrayWords[i]);
-  }
-}
 
 var Node = function() {
     this.isWord = false;
     this.children = {};
 
 };
-// console.log(Node);
 
 Node.prototype = {
 
@@ -93,7 +86,14 @@ Node.prototype = {
     }
 };
 
-module.exports = createTrie;
+function createTrieGraph(arrayWords) {
+  var TrieGraph = new Node();
+  for(var i = 0; i < arrayWords.length; i++) {
+      TrieGraph.insert(arrayWords[i]);
+  }
+}
+
+module.exports = createTrieGraph;
 
 /*  The trie graph work in this file is based on a number of sources, including:
 http://blog.benoitvallon.com/data-structures-in-javascript/the-trie-data-structure/
