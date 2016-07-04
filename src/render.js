@@ -11,12 +11,12 @@ function renderData(input, searchWord){ //input = fileAsString(data)
   var createTrie = createTrieGraph(arrayWords);
   // console.log(createTrie);  //Done!
   var autocompletedWordsArray = createTrie.autoComplete(searchWord);  //returns the matches from trie graph search
-  console.log(autocompletedWordsArray);  //Yup, a lot of words, needs to be cut down!
+  // console.log(autocompletedWordsArray);  //Yup, a lot of words, needs to be cut down!
   var selectedWordsFromArray = randomWordsFromArray(autocompletedWordsArray);
   console.log(selectedWordsFromArray);
   var result = stringifyArray(selectedWordsFromArray);
-  console.log(result); //Working, but needs to be rendered!!
-
+  // console.log(result); //Working, but needs to be rendered!!
+  return result;
 }
 
 function makeArray(string){
@@ -42,7 +42,7 @@ function randomWordsFromArray(autocompletedWordsArray) {
       randomWordsArray.push(chosenWord);
       // console.log(randomWordsArray);
       autocompletedWordsArray.splice(randomIndex, 1);
-      console.log(autocompletedWordsArray);
+      // console.log(autocompletedWordsArray);
     }
     return randomWordsArray;
   } else {

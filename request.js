@@ -1,38 +1,32 @@
-var letters = document.getElementById('typed-letters');
-letters.addEventListener('keyup', getWords);
+  var letters = document.getElementById('typed-letters');
+  // letters.addEventListener('keyup', getWords);
+  var button = document.getElementById('submit-button');
+  button.addEventListener('click', getWords);
 
-// function capitalize() {
-//   letters.value = letters.value.toUpperCase();
-//   console.log(letters.value);
-// }
-
-function getWords(){
-
+function getWords(e){
+  e.preventDefault();
   var xhr = new XMLHttpRequest();
-  console.log(xhr);
+
   xhr.onreadystatechange = function () {
     if(xhr.readyState === 4 && xhr.status === 200){
-
-var result = JSON.parse(xhr.response);
-console.log(result);
-//what it looks like? make/split into an array
-
+    var result = xhr.responseText.split(",");
+    console.log(result)
+    var table = document.getElementById('suggestions');
+    while (table.firstChild) {
+      table.removeChild(table.firstChild);
+    }
       for(var x = 0; x < result.length; x++){
-              var table = document.getElementById('suggestions');
-              var row = table.insertRow(x + 1);
-              var cell = row.insertCell(0);
-              cell.innerHTML = result[x];
-
+        table.insertRow(0);
+        var row = table.insertRow(x + 1);
+        var cell = row.insertCell(0);
+        cell.innerHTML = result[x];
+        console.log(cell);
+      }
     }
   }
-  xhr.open('GET', url , true);
+  xhr.open("GET", "/get-content=" + letters.value);
   xhr.send();
-}}
-
-var text = document.getElementById('typed-letters');
-
-var button = document.getElementById('button');
-button.addEventListener('click', display);
+}
 
 function display() {
 document.getElementById('display-content').innerHTML = text.value;
