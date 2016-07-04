@@ -44,10 +44,8 @@ function renderIndexHtml(request, response) {
 
 function createResponse(request, response) {
   let searchWord = request.url.split("=")[1];
-  console.log(searchWord);
     readFileAsString(__dirname + '/../words.txt', function(fileAsString){
       var output = renderData(fileAsString, searchWord); //from render.js
-      console.log(output);
       response.writeHead(200, {"Content-Type":"text/plain"});
       response.write(output);
       response.end();

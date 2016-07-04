@@ -1,4 +1,5 @@
   var letters = document.getElementById('typed-letters');
+  letters.addEventListener('keyup', getWords);
   var button = document.getElementById('submit-button');
   button.addEventListener('click', getWords);
 
@@ -9,7 +10,6 @@ function getWords(e){
   xhr.onreadystatechange = function () {
     if(xhr.readyState === 4 && xhr.status === 200){
     var result = xhr.responseText.split(",");
-    console.log(result)
     var table = document.getElementById('suggestions');
     while (table.firstChild) {
       table.removeChild(table.firstChild);
@@ -19,7 +19,6 @@ function getWords(e){
         var row = table.insertRow(x + 1);
         var cell = row.insertCell(0);
         cell.innerHTML = result[x];
-        console.log(cell);
       }
     }
   }
