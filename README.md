@@ -2,6 +2,8 @@
 
 [![Code Climate](https://codeclimate.com/github/rm-rfUK/autocompletr/badges/gpa.svg)](https://codeclimate.com/github/rm-rfUK/autocompletr)
 
+[![Coverage Status](https://coveralls.io/repos/github/rm-rfUK/autocompletr/badge.svg?branch=master)](https://coveralls.io/github/rm-rfUK/autocompletr?branch=master)
+
 Everyone's favourite team, "rm -rf uk", is ready to get cracking on their new project, autocompletr.
 
 ## Quickstart
