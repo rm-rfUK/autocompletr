@@ -9,7 +9,8 @@ function getWords(e){
 
   xhr.onreadystatechange = function () {
     if(xhr.readyState === 4 && xhr.status === 200){
-    var result = JSON.parse(xhr.responseText);
+    var result = xhr.responseText.split(",");
+    console.log(result)
     var table = document.getElementById('suggestions');
     while (table.firstChild) {
       table.removeChild(table.firstChild);
