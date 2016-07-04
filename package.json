@@ -21,6 +21,7 @@
     "istanbul": "^0.4.4"
   },
   "dependencies": {
+    "node-static": "^0.7.7",
     "shot": "^3.1.0",
     "tape": "^4.6.0"
   }

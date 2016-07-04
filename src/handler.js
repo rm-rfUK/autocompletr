@@ -18,6 +18,14 @@ function handler(request, response) {
      // do the thing
   } else if (endpoint.includes("/get-content=")) {
     createResponse(request, response);
+  } else if (endpoint.includes('style.css')) {
+    response.writeHead(200, {'Content-Type': 'text/css'});
+    fs.readFile(__dirname + '/../style.css', function(error, file) {
+      if (error) {
+        return console.log(error);
+      }
+        response.end(file);
+    });
   } else if (endpoint.includes('request.js')) {
     response.writeHead(200, {'Content-Type': 'text/js'});
     fs.readFile(__dirname + '/../request.js', function(error, file) {
@@ -43,25 +51,17 @@ function renderIndexHtml(request, response) {
 }
 
 function createResponse(request, response) {
-  console.log(request.url);
+  // console.log(request.url);
   let searchWord = request.url.split("=")[1];
   console.log(searchWord);
-
-  request.on('end', function () {
-
     readFileAsString(__dirname + '/../words.txt', function(fileAsString){
       var output = renderData(fileAsString, searchWord); //from render.js
+      // let stringOfWords = JSON.stringify(output);
       console.log(output);
-    // response.writeHead(200, {'Content-Type': 'text/plain'});
-    // response.end(output); //finish by giving back the result (word/s) from server
-  });
-  // This is my previous ending, lets hope it is not needed anymore!
-  let stringOfWords = JSON.stringify(output);
-  response.writeHead(200, {"Content-Type":"text/plain"});
-  response.write(stringOfWords);
-  response.end();
-
-  });
+      response.writeHead(200, {"Content-Type":"text/plain"});
+      response.write(output);
+      response.end();
+    });
 }
 
 module.exports = handler;
