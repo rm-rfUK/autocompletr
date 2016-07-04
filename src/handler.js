@@ -32,7 +32,6 @@ function renderIndexHtml(request, response) {
 
 function createResponse(request, response) {
   let allTheData = '';
-
   request.on('data', function (chunkOfData) {
       allTheData += chunkOfData;
   });
