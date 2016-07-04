@@ -5,33 +5,33 @@ var createTrieGraph = require('./algorithmTrie');
 
 //take data from words.txt and split on each new line to make array of words, to be used to create trie graph
 
-function makeArray(string){
-  var arrayWords = string.split('\n');
-  return arrayWords;
-};
-
-
-//convert array element into string
-function stringifyArray(input){
-  return input.join(',');
-}
-
-function randomWordsFromArray(autocompletedWordsArray) {
-  var numberWordsWantReturned = 3;
-  var arrayLength = autocompletedWordsArray.length;
-  var randomWordsArray = [];
-
-  if (arrayLength > numberWordsWantReturned) {
-    for(var i = 1; i <= numberWordsWantReturned; i++) {
-      var randomIndex = Math.floor(Math.random() * arrayLength);
-      var chosenWord = autocompletedWordsArray[randomIndex];
-      randomWordsArray.push(chosenWord);
-    }
-    return randomWordsArray;
-  } else {
-    return autocompletedWordsArray;
-  }
-}
+// function makeArray(string){
+//   var arrayWords = string.split('\n');
+//   return arrayWords;
+// };
+//
+//
+// //convert array element into string
+// function stringifyArray(input){
+//   return input.join(',');
+// }
+//
+// function randomWordsFromArray(autocompletedWordsArray) {
+//   var numberWordsWantReturned = 3;
+//   var arrayLength = autocompletedWordsArray.length;
+//   var randomWordsArray = [];
+//
+//   if (arrayLength > numberWordsWantReturned) {
+//     for(var i = 1; i <= numberWordsWantReturned; i++) {
+//       var randomIndex = Math.floor(Math.random() * arrayLength);
+//       var chosenWord = autocompletedWordsArray[randomIndex];
+//       randomWordsArray.push(chosenWord);
+//     }
+//     return randomWordsArray;
+//   } else {
+//     return autocompletedWordsArray;
+//   }
+// }
 
 //render all the data connecting all the functions together
 function renderData(input, searchWord){ //input = fileAsString(data)
@@ -47,6 +47,36 @@ function renderData(input, searchWord){ //input = fileAsString(data)
 
 }
 
+function makeArray(string){
+  var arrayWords = string.split('\n');
+  return arrayWords;
+};
+
+
+//convert array element into string
+function stringifyArray(input){
+  return input.join(',');
+}
+
+function randomWordsFromArray(autocompletedWordsArray) {
+  var numberWordsWantReturned = 4;
+  var arrayLength = autocompletedWordsArray.length;
+  var randomWordsArray = [];
+
+  if (arrayLength > numberWordsWantReturned) {
+    for(var i = 1; i <= numberWordsWantReturned; i++) {
+      var randomIndex = Math.floor(Math.random() * autocompletedWordsArray.length);
+      var chosenWord = autocompletedWordsArray[randomIndex];
+      randomWordsArray.push(chosenWord);
+      // console.log(randomWordsArray);
+      autocompletedWordsArray.splice(randomIndex, 1);
+      console.log(autocompletedWordsArray);
+    }
+    return randomWordsArray;
+  } else {
+    return autocompletedWordsArray;
+  }
+}
 
 //export functions;  I think I really only need to export the renderData() here!
 module.exports = renderData;
