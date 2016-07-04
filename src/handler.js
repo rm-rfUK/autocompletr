@@ -1,5 +1,9 @@
 const fs = require('fs');
 const querystring = require('querystring');
+
+const readFileAsString = require('./loadFile');
+const renderData = require('./render');
+
 const dummy = require('./dummy');
 // var AlgorithmTrie = require('AlgorithmTrie');
 // var wordsTrie = new AlgorithmTrie;
@@ -39,13 +43,25 @@ function renderIndexHtml(request, response) {
 }
 
 function createResponse(request, response) {
-  let letterString = request.url.split("=")[1];
-  //Kara to put function in here :)
-  let arrayOfWords = dummy(letterString);
-  let stringOfWords = JSON.stringify(arrayOfWords);
+  console.log(request.url);
+  let searchWord = request.url.split("=")[1];
+  console.log(searchWord);
+
+  request.on('end', function () {
+
+    readFileAsString(__dirname + '/../words.txt', function(fileAsString){
+      var output = renderData(fileAsString, searchWord); //from render.js
+      console.log(output);
+    // response.writeHead(200, {'Content-Type': 'text/plain'});
+    // response.end(output); //finish by giving back the result (word/s) from server
+  });
+  // This is my previous ending, lets hope it is not needed anymore!
+  let stringOfWords = JSON.stringify(output);
   response.writeHead(200, {"Content-Type":"text/plain"});
   response.write(stringOfWords);
   response.end();
+
+  });
 }
 
 module.exports = handler;
