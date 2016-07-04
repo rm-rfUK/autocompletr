@@ -8,7 +8,6 @@ const server = http.createServer(handler);
 const port = 3000;
 
 server.listen(port);
-// console.log(`Server running on http://localhost:${port}`);
 
 //read .txt file on startup of server and put it in as string in memory
 // the loadFileAsString() is imported from loadfile.js

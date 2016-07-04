@@ -4,18 +4,10 @@ const querystring = require('querystring');
 const readFileAsString = require('./loadFile');
 const renderData = require('./render');
 
-const dummy = require('./dummy');
-// var AlgorithmTrie = require('AlgorithmTrie');
-// var wordsTrie = new AlgorithmTrie;
-
 function handler(request, response) {
   const endpoint = request.url;
-  //console.log(endpoint);
   if (endpoint === '/') {
     renderIndexHtml(request, response);
-// } else if (endpoint === ".css") {
-      // response.writeHead(200, {"Content-Type": appropriate type });
-     // do the thing
   } else if (endpoint.includes("/get-content=")) {
     createResponse(request, response);
   } else if (endpoint.includes('style.css')) {
@@ -51,12 +43,10 @@ function renderIndexHtml(request, response) {
 }
 
 function createResponse(request, response) {
-  // console.log(request.url);
   let searchWord = request.url.split("=")[1];
   console.log(searchWord);
     readFileAsString(__dirname + '/../words.txt', function(fileAsString){
       var output = renderData(fileAsString, searchWord); //from render.js
-      // let stringOfWords = JSON.stringify(output);
       console.log(output);
       response.writeHead(200, {"Content-Type":"text/plain"});
       response.write(output);

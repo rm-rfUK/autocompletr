@@ -1,5 +1,4 @@
   var letters = document.getElementById('typed-letters');
-  // letters.addEventListener('keyup', getWords);
   var button = document.getElementById('submit-button');
   button.addEventListener('click', getWords);
 
