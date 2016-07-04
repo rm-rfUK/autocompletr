@@ -91,6 +91,7 @@ function createTrieGraph(arrayWords) {
   for(var i = 0; i < arrayWords.length; i++) {
       TrieGraph.insert(arrayWords[i]);
   }
+  return TrieGraph;
 }
 
 module.exports = createTrieGraph;

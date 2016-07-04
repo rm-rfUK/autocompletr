@@ -1,4 +1,4 @@
-var algorithmTrie = require('./algorithmTrie');
+var createTrieGraph = require('./algorithmTrie');
 
 //Tie all the functions together to actually do and render the autocomplete!
 
@@ -16,13 +16,14 @@ function stringifyArray(input){
   return input.join(',');
 }
 
-/render all the data connecting all the functions together
+//render all the data connecting all the functions together
 function renderData(input, searchWord){ //input = fileAsString(data)
-  console.log('SEARCH', searchWord);
+  // console.log('SEARCH', searchWord); OK, I got here!!
   var arrayWords = makeArray(input);
   // console.log(arrayWords);
   var createTrie = createTrieGraph(arrayWords);
-  var matches =  createTrie.autoComplete(searchWord);  //returns the matches from trie graph search
+  console.log(createTrie);  //this is getting logged as 'undefined!'
+  var matches = createTrie.autoComplete(searchWord);  //returns the matches from trie graph search
   // console.log(matches);
   var result = stringifyArray(matches);
   // console.log(result);

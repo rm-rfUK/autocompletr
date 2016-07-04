@@ -1,9 +1,8 @@
 const fs = require('fs');
 const querystring = require('querystring');
 
-const renderData = require('./algorithmTrie');
-// const loadfile = require('./loadFile');
 const readFileAsString = require('./loadFile');
+const renderData = require('./render');
 
 
 function handler(request, response) {
@@ -43,10 +42,11 @@ function createResponse(request, response) {
     console.log(convertedData);
     var searchWord = convertedData['inputString'];
     console.log(searchWord);
+
     readFileAsString(__dirname + '/../words.txt', function(fileAsString){
       var output = renderData(fileAsString, searchWord); //from render.js
   //   response.writeHead(200, {'Content-Type': 'text/plain'});
-  //   response.end(output); //finish by giving back the result (word) from server
+  //   response.end(output); //finish by giving back the result (word/s) from server
   });
   // This is my previous ending, lets hope it is not needed anymore!
     response.writeHead(205, {'Location': '__dirname + "/index.html"'});
