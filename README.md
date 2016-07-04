@@ -1,5 +1,7 @@
 # autocompletr
 
+[![Code Climate](https://codeclimate.com/github/rm-rfUK/autocompletr/badges/gpa.svg)](https://codeclimate.com/github/rm-rfUK/autocompletr)
+
 Everyone's favourite team, "rm -rf uk", is ready to get cracking on their new project, autocompletr.
 
 ## Quickstart
