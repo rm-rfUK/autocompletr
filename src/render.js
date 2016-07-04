@@ -11,7 +11,6 @@ function renderData(input, searchWord){ //input = fileAsString(data)
   var createTrie = createTrieGraph(arrayWords);
   var autocompletedWordsArray = createTrie.autoComplete(searchWord);  //returns the matches from trie graph search
   var selectedWordsFromArray = randomWordsFromArray(autocompletedWordsArray);
-  console.log(selectedWordsFromArray);
   var result = stringifyArray(selectedWordsFromArray);
   return result;
 }
