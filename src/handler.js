@@ -37,16 +37,15 @@ function createResponse(request, response) {
       allTheData += chunkOfData;
   });
   request.on('end', function () {
-    console.log(allTheData);
     const convertedData = querystring.parse(allTheData);
-    console.log(convertedData);
+    // console.log(convertedData);
     var searchWord = convertedData['inputString'];
-    console.log(searchWord);
+    // console.log(searchWord);
 
     readFileAsString(__dirname + '/../words.txt', function(fileAsString){
       var output = renderData(fileAsString, searchWord); //from render.js
-  //   response.writeHead(200, {'Content-Type': 'text/plain'});
-  //   response.end(output); //finish by giving back the result (word/s) from server
+    // response.writeHead(200, {'Content-Type': 'text/plain'});
+    // response.end(output); //finish by giving back the result (word/s) from server
   });
   // This is my previous ending, lets hope it is not needed anymore!
     response.writeHead(205, {'Location': '__dirname + "/index.html"'});

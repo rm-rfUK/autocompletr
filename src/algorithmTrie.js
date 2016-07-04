@@ -1,4 +1,4 @@
-// Create Trie graph, and use it to do autocomplete functionality.  To be used in render.js (and maybe handler.js?)
+// Create Trie graph, and use it to do autocomplete functionality.  To be used in render.js
 
 
 var Node = function() {
@@ -20,7 +20,6 @@ Node.prototype = {
         var thisNode = this,
                 character,
                 child;
-          // console.log(thisNode);
 
         if(indexInString === undefined) {
             indexInString = 0;
@@ -56,7 +55,7 @@ Node.prototype = {
             child = thisNode.children[character];
             wordsToReturn = wordsToReturn.concat(child.getAllWords(string + character));
         }
-        console.log(wordsToReturn);
+        // console.log(wordsToReturn);
         return wordsToReturn;
     },
 
