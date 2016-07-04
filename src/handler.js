@@ -12,7 +12,7 @@ function handler(request, response) {
 // } else if (endpoint === ".css") {
       // response.writeHead(200, {"Content-Type": appropriate type });
      // do the thing
-  } else if (endpoint.includes('/create-response')) {
+  } else if (endpoint.includes('?')) {
     createResponse(request, response);
   } else {
     response.writeHead(404);
@@ -31,15 +31,11 @@ function renderIndexHtml(request, response) {
 }
 
 function createResponse(request, response) {
-  let allTheData = '';
-  request.on('data', function (chunkOfData) {
-      allTheData += chunkOfData;
-  });
+  console.log(request.url);
+  let searchWord = request.url.split("=")[1];
+  console.log(searchWord);
+
   request.on('end', function () {
-    const convertedData = querystring.parse(allTheData);
-    // console.log(convertedData);
-    var searchWord = convertedData['inputString'];
-    // console.log(searchWord);
 
     readFileAsString(__dirname + '/../words.txt', function(fileAsString){
       var output = renderData(fileAsString, searchWord); //from render.js
@@ -47,8 +43,9 @@ function createResponse(request, response) {
     // response.end(output); //finish by giving back the result (word/s) from server
   });
   // This is my previous ending, lets hope it is not needed anymore!
+
     response.writeHead(205, {'Location': '__dirname + "/index.html"'});
-    response.end();
+    response.end("hello");
   });
 }
 
