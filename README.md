@@ -2,8 +2,6 @@
 
 Everyone's favourite team, "rm -rf uk", is ready to get cracking on their new project, autocompletr.
 
-## How to run Istanbul
-Istanbul writes a report which lets you know which functions/branches are being called. See more here: https://github.com/dwyl/learn-istanbul. To generate a report for the file you want, copy the following into your terminal:
-```bash
-node ./node_modules/.bin/istanbul cover test.js
-```
+## This uses a trie graph to return autocomplete words, which are then randomly chosen from and sorted into shorter array to be rendered (for now they are simply console.loged).  
+
+The big issue that autocompletr and autocompletr2 should be merged together, but they are not.
