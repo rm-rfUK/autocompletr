@@ -14,6 +14,14 @@ function handler(request, response) {
      // do the thing
   } else if (endpoint.includes("/get-content=")) {
     createResponse(request, response);
+  } else if (endpoint.includes('style.css')) {
+    response.writeHead(200, {'Content-Type': 'text/css'});
+    fs.readFile(__dirname + '/../style.css', function(error, file) {
+      if (error) {
+        return console.log(error);
+      }
+        response.end(file);
+    });
   } else if (endpoint.includes('request.js')) {
     response.writeHead(200, {'Content-Type': 'text/js'});
     fs.readFile(__dirname + '/../request.js', function(error, file) {
